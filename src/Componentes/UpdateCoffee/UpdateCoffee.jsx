@@ -22,7 +22,7 @@ const UpdateCoffee = () => {
         const updatedCoffee = {name,supplier,category,chef,tast,details,photo};
         console.log(updatedCoffee);
         // send data to the server
-        fetch(`http://localhost:5000/coffee${_id}`,{
+        fetch(`http://localhost:5000/coffee/${_id}`,{
             method: "PUT",
             headers:{
                 'content-type': 'application/json'

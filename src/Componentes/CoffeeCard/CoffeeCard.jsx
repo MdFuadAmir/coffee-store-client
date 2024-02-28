@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import PropTypes from 'prop-types';
 
-const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
+const CoffeeCard = ({ coffee}) => {
   const { _id, name, supplier, chef, photo, tast, details, category } = coffee;
 
   const handleDelete = (_id) => {
@@ -28,8 +28,6 @@ const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
                 text: "Your Coffee has been deleted.",
                 icon: "success",
               });
-              const remaining = coffees.filter(cof => cof._id !== _id);
-              setCoffees(remaining);
             }
           });
       }
@@ -73,5 +71,5 @@ const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
 export default CoffeeCard;
 
 CoffeeCard.propTypes ={
-  coffee: PropTypes.object.isRequired
+  coffee: PropTypes.object.isRequired,
 }
