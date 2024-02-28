@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import PropTypes from 'prop-types';
+import { FaRegEye } from "react-icons/fa";
+import { FaPen } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
-const CoffeeCard = ({ coffee}) => {
-  const { _id, name, supplier, chef, photo, tast, details, category } = coffee;
+
+const CoffeeCard = ({ coffee, coffees, setCoffees}) => {
+  const { _id, name, chef, photo,} = coffee;
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -28,43 +32,44 @@ const CoffeeCard = ({ coffee}) => {
                 text: "Your Coffee has been deleted.",
                 icon: "success",
               });
+              const remaining = coffees.filter(cof => cof._id !== _id);
+              setCoffees(remaining);
             }
           });
       }
     });
   };
   return (
-    <div className="card card-side bg-slate-300 gap-6 shadow-xl mt-10 p-4">
+   <div>
+     <div className="card card-side items-center bg-[#f5f4f2] gap-6 p-4">
       <figure>
         <img src={photo} alt="coffee" />
       </figure>
       <div className="flex justify-between w-full gap-4">
         <div>
-          <h2>Name: {name}</h2>
-          <p>Supplier: {supplier}</p>
+          <p>Name: {name}</p>
           <p>Chef: {chef}</p>
-          <p>Tast: {tast}</p>
-          <p>Category: {category}</p>
-          <p>Dettails: {details}</p>
+          <p>Price: {chef}</p>
         </div>
         <div className="join join-vertical space-y-4">
-          <button className="bg-stone-500 text-white rounded-lg  p-2">
-            view
+          <button className="bg-[#d2b48c] text-white border-none rounded-lg  p-2">
+            <FaRegEye className="text-xl"></FaRegEye>
           </button>
           <Link to={`/updateCoffee/${_id}`}>
-          <button className="bg-gray-800 text-white  rounded-lg p-2">
-            edit
+          <button className="bg-[#3c393b] text-white border-none  rounded-lg p-2">
+            <FaPen className="text-xl"></FaPen>
           </button>
           </Link>
           <button
             onClick={() => handleDelete(_id)}
-            className="bg-red-600 text-white rounded-lg p-2"
+            className="bg-[#ea4744] text-white rounded-lg border-none p-2"
           >
-            delete
+            <MdDelete className="text-xl"></MdDelete>
           </button>
         </div>
       </div>
     </div>
+   </div>
   );
 };
 
@@ -72,4 +77,6 @@ export default CoffeeCard;
 
 CoffeeCard.propTypes ={
   coffee: PropTypes.object.isRequired,
+  coffees: PropTypes.object.isRequired,
+  setCoffees: PropTypes.object.isRequired,
 }
