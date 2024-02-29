@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import CoffeeCard from "../CoffeeCard/CoffeeCard";
 import { useState } from "react";
 import Header from "../Header/Header";
@@ -46,12 +46,12 @@ const Home = () => {
                     <h2>High Quality</h2>
                     <p>We served the coffee to you maintaining the best quality</p>
                 </div>
-                <div className=" space-y-3">
+                <div className="space-y-3">
                     <img src={logo3} alt="" />
                     <h2>Pure Grades</h2>
                     <p>The coffee is made of the green coffee beans which you will love</p>
                 </div>
-                <div className=" space-y-3">
+                <div className="space-y-3">
                     <img src={logo4} alt="" />
                     <h2>Proper Roasting</h2>
                     <p>Your coffee is brewed by first roasting the green coffee beans</p>
@@ -63,7 +63,9 @@ const Home = () => {
                 <div className="text-center">
                     <p>--Sip & Savor--</p>
                     <h2 className="font-bold text-3xl mt-4 mb-6">Our Popular Products</h2>
-                    <button className="px-4 py-2 bg-[#e3b577] font-bold border-2 border-black rounded-md text-white items-center justify-center">Learn More <RiCupLine></RiCupLine></button>
+                    <Link to="/addCoffee">
+                    <button className="px-4 py-2 bg-[#e3b577] font-bold border-2 border-black rounded-md text-white items-center justify-center">Add Coffee<RiCupLine></RiCupLine></button>
+                    </Link>
 
                 </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6
@@ -92,7 +94,7 @@ const Home = () => {
                     <img className="rounded-lg w-full" src={img6} alt="" />
                     <img className="rounded-lg w-full" src={img7} alt="" />
                     <img className="rounded-lg w-full" src={img8} alt="" />                   
-                </div>
+                </div> 
             </div>
             {/* follow us on instagram*/}
 
